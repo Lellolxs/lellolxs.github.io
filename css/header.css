@@ -1,0 +1,6 @@
+header {
+    height: 500px;
+    background-image: url("../img/banner.jpg");
+    background-size: cover;
+    background-position-y: 30%;
+}
