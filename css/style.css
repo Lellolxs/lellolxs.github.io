@@ -27,3 +27,12 @@ main{
     padding-top: 20px;
 }
 
+
+header {
+    height: 500px;
+    background-image: url("../img/neumann_banner.png");
+    background-size: cover;
+    background-position-y: 30%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
