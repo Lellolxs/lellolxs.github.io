@@ -25,6 +25,8 @@ html {
 main{
     margin-top: 20px;
     padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 
@@ -35,4 +37,9 @@ header {
     background-position-y: 30%;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+#szoveg{
+    padding-left: 55px;
+    padding-right: 55px;
 }
