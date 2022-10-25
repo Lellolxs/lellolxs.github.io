@@ -42,7 +42,7 @@ header {
 footer {
     text-align: center;
     padding: 20px;
-    margin-top: 35px;
+    margin-top: 35px
 }
 .card{
     padding: 20px;
@@ -55,3 +55,19 @@ footer {
 }
 
 .text-justify  { text-align: justify !important; }
+
+#subDiv{
+    margin-left: 40px;
+    margin-right: 40px;
+    font-style: justify;
+    font-size:110%;
+}
+#BmszcNeuKep{
+    float: right;
+    margin-left: 10px;
+    border: 2px solid;
+}
+
+h1,h2 {
+    margin-bottom: 20px;
+}
