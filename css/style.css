@@ -72,45 +72,6 @@ h1,h2 {
     margin-bottom: 20px;
 }
 
-.dropbtn {
-    background-color: #4285F4;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .dropbtn:hover, .dropbtn:focus {
-    background-color: #326bc7;
-  }
-  
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content p {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdown-content p:hover {background-color: #ddd;}
-  
-  .show {display:block;}
-
-
 @media only screen and (max-width: 992px) {
     #elete-content{
         padding: 0;
@@ -119,4 +80,10 @@ h1,h2 {
         margin-left: 10px !important;
         margin-right: 10px !important;
     }
+}
+
+table, td, th{
+    border: #0275d8 1px solid;
+    border-collapse: collapse;
+    text-align: center;
 }
