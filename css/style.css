@@ -83,9 +83,7 @@ table, td, th{
     border-collapse: collapse;
     text-align: center;
 }
-card2{
-    margin: auto;
-    padding: 20px;
-    display: block;
-    align-items: center;
+
+iframe {
+    align: center;
 }
