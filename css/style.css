@@ -53,10 +53,6 @@ footer {
     margin: 20px;
 }
 
-#szoveg{
-    padding-left: 55px;
-    padding-right: 55px;
-}
 
 .text-justify  { text-align: justify !important; }
 
@@ -89,4 +85,8 @@ table, td, th{
     border: #0275d8 1px solid;
     border-collapse: collapse;
     text-align: center;
+}
+
+iframe {
+    align: center;
 }
