@@ -83,3 +83,7 @@ table, td, th{
 iframe {
     align: center;
 }
+
+#listamelletikep{
+    size: 50%;
+}
