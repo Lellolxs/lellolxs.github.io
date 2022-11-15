@@ -11,19 +11,19 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 bg-body rounded">
         <div class="container-fluid">
-            <a class="navbar-brand fs-3 ms-3" href="../index.html">John von Neumann</a>
+            <a class="navbar-brand fs-3" href="../index.html">John von Neumann</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-center">
+                <ul class="navbar-nav align-items-end">
                     <li class="nav-item fs-5">
                         <a class="btn btn-outline-secondary nav-link py-1 px-5 shadow-sm p-3 bg-body rounded" href="#">Találmányok</a>
                     </li>
-                    <li class="nav-item fs-5 ms-5">
+                    <li class="nav-item fs-5">
                         <a class="btn btn-outline-secondary nav-link py-1 px-5 shadow-sm p-3 bg-body rounded" href="./elete.html">Élete</a>
                     </li>
-                    <li class="nav-item fs-5 ms-5 me-3">
+                    <li class="nav-item fs-5">
                         <a class="btn btn-outline-secondary nav-link py-1 px-5 shadow-sm p-3 bg-body rounded" href="./iskolak.html">Iskolánk</a>
                     </li>
                 </ul>
@@ -31,35 +31,40 @@
         </div>
     </nav>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    
-    <main>
-
-        <div id="subDiv" class="bg-light bg-body rounded">
-            <h1>Miért Ajánljuk a BMSZC Neumann János Informatikai Technikumot?</h1>
-
-            <img src="../img/bmszc_neu_kep.jpg" id="BmszcNeuKep">
-
-            <h2>BMSZC NEUMANN János informatikai technikumot mindenkinek csak ajánlani tudjuk.</h2> 
-
-            <p>A szint amit az iskola képvisel kimagasló nem csak Magyarországon, hanem európa szerte is. Rengeteg szakmai tapasztalatot illetve tudást nyújt az iskola, amellyel az életbe könnyen tudnak a diákok boldogulni. Amennyiben a jegyei jó a tanulonak, még ösztöndíjat is kap a diák és nem is keveset.</p>
-
-            <p>Az iskola közössége kiváló, itt mindenféle emberrel találkozhatsz és nem leszel sose kiközösítve. Mindenki betud illeszkedni valahova, olyan emberek közé akivel jól érzi magát és jókat tudnak beszélni. Rengeteg iskolai programot is szerveznek, pl.: A híres “Neu nap” amely során ezekkel az emberekkel ismerkedhetsz különböző programokon.</p>
-
-            <p>A Neumann rengeteg szakkört kinál, önvédelmitől kezdve zenei és egyéb tehetségképző foglalkozást nyújt. Az osztályunk kedvence a Papp Zoltán Tibor Tanár Úr álltal szervezett délutáni foglalkozás amely során zenei tehetséget gondozzák és fejlesztik.</p>
-
-            <p>Neumann a diákok versenyeztetésébe is kiváló, külön csoportba helyezik az erre allkalmas diákokat és ők megkapják a megfelelő lehetőséget, hogy kitűnjenek és a tudásukat megmutatthasák versenyekbe. A versenyekért nyilván díjakkat és különböző jutalmakat nyerhetnek, akár külföldi utazást is.</p>
-
-            <p>A Neumannt ezért tudjuk mindenkinek ajánlani,és nem hiába magyarország legjobb intézménye.</p>
-            
-            <iframe src="https://drive.google.com/file/d/1DImdMZIbYdkDmyPLEZV_4thMekrhnjEu/preview" width="640" height="480" allow="autoplay"></iframe>
-            
+    <main class="w-75 mx-auto row justify-content-center align-items-center" id="elete-content">
+        <div class="col-xxl-6 col-sm-12">
+            <h1>Neumann János Informatikai Technikum</h1>
+            <!-- <h3>Korai élete</h3> -->
+            <p class="text-justify">A BMSZC Neumann János Informatikai Technikum a legjobb számtech. oktató intézmény egész budapesten. A szint amit az iskola képvisel kimagasló nem csak Magyarországon, hanem európa szerte is. Rengeteg szakmai tapasztalatot illetve tudást nyújt az iskola, amellyel az életbe könnyen tudnak a diákok boldogulni. Amennyiben a jegyei jó a tanulonak, még ösztöndíjat is kapnak a diákok.</p>
         </div>
+        <div class="col-xxl-6 col-sm-12 col-xl-8 col-md-9">
+            <figure class="figure w-100">
+                <img src="../img/bmszc_neu_kep.jpg" class="figure-img img-fluid rounded w-100" alt="Kép Neumann Jánosról">
+                <figcaption class="figure-caption text-start">Neumann János Informatikai Technikum. Itt: Budapest, Kerepesi út 124, 1144</figcaption>
+            </figure>
+        </div>
+
+        
+
+        <!-- <h2>BMSZC NEUMANN János informatikai technikumot mindenkinek csak ajánlani tudjuk.</h2>  -->
+
+
+        <p>Az iskola közössége kiváló, itt mindenféle emberrel találkozhatsz és nem leszel sose kiközösítve. Mindenki betud illeszkedni valahova, olyan emberek közé akivel jól érzi magát és jókat tudnak beszélni. Rengeteg iskolai programot is szerveznek, pl.: A híres “Neu nap” amely során ezekkel az emberekkel ismerkedhetsz különböző programokon.</p>
+
+        <p>A Neumann rengeteg szakkört kinál, önvédelmitől kezdve zenei és egyéb tehetségképző foglalkozást nyújt. Az osztályunk kedvence a Papp Zoltán Tibor Tanár Úr álltal szervezett délutáni foglalkozás amely során zenei tehetséget gondozzák és fejlesztik.</p>
+
+        <p>Neumann a diákok versenyeztetésébe is kiváló, külön csoportba helyezik az erre allkalmas diákokat és ők megkapják a megfelelő lehetőséget, hogy kitűnjenek és a tudásukat megmutatthasák versenyekbe. A versenyekért nyilván díjakkat és különböző jutalmakat nyerhetnek, akár külföldi utazást is.</p>
+
+        <p>A Neumannt ezért tudjuk mindenkinek ajánlani,és nem hiába magyarország legjobb intézménye.</p>
+        
+        <!-- <iframe src="https://drive.google.com/file/d/1DImdMZIbYdkDmyPLEZV_4thMekrhnjEu/preview" width="640" height="480" allow="autoplay"></iframe> -->
+        
 
     </main>
     <footer class="bg-primary text-light">
         <p>Készítette © TrenSetters Csapat</p>
         <p class="mb-0">Kovács Zoltán, Hajdu Benedek, Granilla Péter</p>
-      </footer>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,7 +1,30 @@
-@media only screen and (max-width: 576px) {}
-@media only screen and (min-width: 576px) {}
+@media only screen and (max-width: 576px) {
+    nav * ul.navbar-nav > li{
+        width: 100%;
+        margin: 5px 0 5px 0;
+    }
+    nav * button {
+        margin-bottom: 5px;
+    }
+}
+@media only screen and (min-width: 576px) {
+    nav * ul.navbar-nav > li{
+        width: 300px;
+        margin: 5px 0 5px 0;
+    }
+}
 @media only screen and (min-width: 768px) {}
-@media only screen and (min-width: 992px) {}
+
+@media only screen and (min-width: 992px) {
+    nav * ul.navbar-nav > li{
+        width: 220px;
+        margin: 0 10px 0 10px;
+
+    }
+    nav * ul.navbar-nav {
+        float: right;
+    }
+}
 @media only screen and (min-width: 1200px) {}
 @media only screen and (min-width: 1400px) {
     #content {
@@ -56,14 +79,15 @@ footer {
     font-style: justify;
     font-size:110%;
 }
-#BmszcNeuKep{
+/* #BmszcNeuKep{
     float: right;
     margin-left: 10px;
     border: 2px solid;
-}
+} */
 
 h1,h2 {
     margin-bottom: 20px;
+    margin-top: 10px !important;
 }
 
 @media only screen and (max-width: 992px) {
