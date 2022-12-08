@@ -7,6 +7,22 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style>
+        @media only screen and (max-width: 576px) { 
+            #maincontent{
+                width: 90% !important;
+            }
+        }
+        /* 
+        @media only screen and (max-width: 445px) { 
+            #editbutton{
+                display:none;
+            }        
+        } */
+        @media only screen and (max-width: 320px) { 
+            #maincontent {
+                display: none;
+            }
+        }
         .InputContainer {
             width: fit-content;
             margin: 0;
@@ -20,20 +36,20 @@
     </style>
 </head>
 <body>
-    <div class="container w-75 mx-auto mt-5">
+    <div class="container w-75 mx-auto mt-5" id="maincontent">
         <div class="row">
             <div class="col-sm-12 col-lg-6 mb-5">
                 <div class="mx-auto" style="width: fit-content;">
                     <label for="InputR">\(R\) - Gázállandó</label>
                     <div class="InputContainer">
-                        <input type="number" id="InputR" value="8.314" disabled>
+                        <input type="number" id="InputR" value="8.314">
                         <span id="special">\(J \over mol*K\)</span>
-                        <button class="btn btn-info ms-3" onclick="toggleEdit()">Szerkesztés</button>
+                        <!-- <button class="btn btn-info ms-3" id="editbutton">Szerkesztés</button> -->
                     </div>
             
                     <label for="InputP">\(p\) - Nyomás</label>
                     <div class="InputContainer">
-                        <input type="number" id="InputP" value="831400">
+                        <input type="number" id="InputP">
                         <select id="unitofP">
                             <option value="pa" selected>Pa</option>
                             <option value="kpa">kPa</option>
@@ -45,7 +61,7 @@
             
                     <label for="InputT">\(T\) - Hőmérséklet</label>
                     <div class="InputContainer">
-                        <input type="number" id="InputT" value="300">
+                        <input type="number" id="InputT">
                         <select id="unitofT">
                             <option value="kelvin" selected>K</option>
                             <option value="celsius">°C</option>
@@ -55,7 +71,7 @@
             
                     <label for="InputV">\(V\) - Térfogat</label>
                     <div class="InputContainer">
-                        <input type="number" id="InputV" value="30">
+                        <input type="number" id="InputV">
                         <select id="unitofV">
                             <option value="l" selected>L</option>
                             <option value="mm">mm3</option>
@@ -70,13 +86,14 @@
                         <input type="number" id="InputN">
                         <span>\(mol\)</span>
                     </div>
-                    <button class="btn btn-secondary mt-2" onclick="calc()">Számolás</button>
+                    <button class="btn btn-info mt-2" onclick="calc()">Számolás</button>
                 </div>
             </div>
             <div class="col-sm-12 col-lg-6" id="explanationfield">
                 <h3>Magyarázat:</h3>
                 <p>A három gáztörvényt: Boyle-Mariotte-törvényt, a Gay-Lussac-törvényt és a Charles-törvényt összevonva az egyesített gáztörvényt kapjuk.</p>
                 <p>Az egyesített gáztörvény alapján \(p \cdot V = n \cdot R \cdot T\), ebből az egyenletből ki tudjuk fejezni a hiányzó változót hogy megkapjuk a kívánt eredményt.</p>
+                <hr>
                 <p id="missingvar"></p>
                 <p id="equation"></p>
                 <p id="conversionnote"></p>

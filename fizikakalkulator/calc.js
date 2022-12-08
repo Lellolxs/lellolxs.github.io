@@ -96,7 +96,7 @@ function calc() {
             });
             typeset(() => {
                 const math = document.getElementById("equation");
-                math.innerHTML = "$$R = {p \\cdot V \\over T \\cdot n}$$";
+                math.innerHTML = "$$R = {p \\cdot V \\over n \\cdot T}$$";
                 math.style = "font-size: 120%;";
                 return [math];
             });
@@ -106,7 +106,7 @@ function calc() {
 
             typeset(() => {
                 const math = document.getElementById("completeequation");
-                math.innerHTML = `$$R = {${convpres}\\cdot ${convvol} \\over ${convtemp} \\cdot ${N}} = ${(convpres*convvol)/(convtemp*N)}$$`;
+                math.innerHTML = `$$R = {${convpres}\\cdot ${convvol} \\over ${N} \\cdot ${convtemp}} = ${Math.round((convpres*convvol)/(N*convtemp)*1000)/1000}$$`;
 
                 math.style = "display: inline-block; font-size: 120%;";
                 return [math];
@@ -138,7 +138,7 @@ function calc() {
 
             typeset(() => {
                 const math = document.getElementById("completeequation");
-                math.innerHTML = `$$p = {{${N} \\cdot ${R} \\cdot ${convtemp}}\\over ${convvol}} = ${(N*R*convtemp)/convvol}$$`;
+                math.innerHTML = `$$p = {{${N} \\cdot ${R} \\cdot ${convtemp}}\\over ${convvol}} = ${Math.round((N*R*convtemp)/convvol*1000)/1000}$$`;
                 math.style = "display: inline-block; font-size: 120%;";
                 return [math];
             });
@@ -158,7 +158,7 @@ function calc() {
             });
             typeset(() => {
                 const math = document.getElementById("equation");
-                math.innerHTML = "$$T = {{p \\cdot V} \\over {N \\cdot R}}$$";
+                math.innerHTML = "$$T = {{p \\cdot V} \\over {n \\cdot R}}$$";
                 math.style = "font-size: 120%;";
                 return [math];
             });
@@ -168,7 +168,7 @@ function calc() {
 
             typeset(() => {
                 const math = document.getElementById("completeequation");
-                math.innerHTML = `$$T = {{${convpres} \\cdot ${convvol}} \\over {${N} \\cdot ${R}}} = ${(convpres*convvol)/(N*R)}$$`;
+                math.innerHTML = `$$T = {{${convpres} \\cdot ${convvol}} \\over {${N} \\cdot ${R}}} = ${Math.round((convpres*convvol)/(N*R)*1000)/1000}$$`;
                 math.style = "display: inline-block; font-size: 120%;";
                 return [math];
             });
@@ -198,7 +198,7 @@ function calc() {
 
             typeset(() => {
                 const math = document.getElementById("completeequation");
-                math.innerHTML = `$$V = {{${N} \\cdot ${R} \\cdot ${convtemp}}\\over ${convpres}} = ${(N*R*convtemp)/convpres}$$`;
+                math.innerHTML = `$$V = {{${N} \\cdot ${R} \\cdot ${convtemp}}\\over ${convpres}} = ${Math.round((N*R*convtemp)/convpres*1000)/1000}$$`;
                 math.style = "display: inline-block; font-size: 120%;";
                 return [math];
             });
@@ -213,7 +213,7 @@ function calc() {
         else if (N == null || N == ""){
             typeset(() => {
                 const math = document.getElementById("missingvar");
-                math.innerHTML = "Jelen esetben \\(N\\) hiányzik, az egyesített gáztörvényt használva, ki tudjuk számolni az értékét.";
+                math.innerHTML = "Jelen esetben \\(n\\) hiányzik, az egyesített gáztörvényt használva, ki tudjuk számolni az értékét.";
                 return [math];
             });
             typeset(() => {
@@ -228,7 +228,7 @@ function calc() {
 
             typeset(() => {
                 const math = document.getElementById("completeequation");
-                math.innerHTML = `$$n = {{${convpres} \\cdot ${convvol}} \\over {${R} \\cdot ${convtemp}}} = ${(convpres*convvol)/(R*convtemp)}$$`;
+                math.innerHTML = `$$n = {{${convpres} \\cdot ${convvol}} \\over {${R} \\cdot ${convtemp}}} = ${Math.round((convpres*convvol)/(R*convtemp)*1000)/1000}$$`;
                 math.style = "display: inline-block; font-size: 120%;";
                 return [math];
             });
