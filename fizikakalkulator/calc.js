@@ -19,52 +19,6 @@ function calc() {
     var V = document.getElementById("InputV").value;
     var N = document.getElementById("InputN").value;
 
-    switch (tempunit) {
-        case 'kelvin':
-            convtemp = T; 
-            break;
-        case 'celsius':
-            convtemp = T + 273.15;
-            break;
-        case 'farenheit':
-            convtemp = (T - 32) * 5/9 + 273.15;
-            break;
-    }
-
-    switch (voluunit) {
-        case 'mm':
-            convvol = V / 1000000000;
-            break;
-        case 'cm':
-            convvol = V / 1000000;
-            break;
-        case 'dm':
-        case 'l':
-            convvol = V / 1000;
-            break;
-        case 'm':
-            convvol = V;
-            break;
-    }
-
-    switch (presunit) {
-        case 'pa':
-            convpres = P;
-            break;
-        case 'kpa':
-            convpres = P * 1000;
-            break;
-        case 'mpa':
-            convpres = P * 1000000;
-            break;
-        case 'gpa':
-            convpres = P * 1000000000;
-            break;
-        case 'tpa':
-            convpres = P * 1000000000000;
-            break;
-    }
-
     let emptyfieldcount = 5;
     if (!(R == null || R == "")){
         emptyfieldcount--;
@@ -87,6 +41,52 @@ function calc() {
     if (emptyfieldcount == 0){
         alert("Nincs mit számolni, minden meg van adva.");
     } else if (emptyfieldcount == 1){
+        
+        switch (tempunit) {
+            case 'kelvin':
+                convtemp = Number(T); 
+                break;
+            case 'celsius':
+                convtemp = Number(T) + 273.15;
+                break;
+            case 'farenheit':
+                convtemp = (Number(T) - 32) * 5/9 + 273.15;
+                break;
+        }
+    
+        switch (voluunit) {
+            case 'mm':
+                convvol = Number(V) / 1000000000;
+                break;
+            case 'cm':
+                convvol = Number(V) / 1000000;
+                break;
+            case 'dm':
+            case 'l':
+                convvol = Number(V) / 1000;
+                break;
+            case 'm':
+                convvol = Number(V);
+                break;
+        }
+    
+        switch (presunit) {
+            case 'pa':
+                convpres = Number(P);
+                break;
+            case 'kpa':
+                convpres = Number(P) * 1000;
+                break;
+            case 'mpa':
+                convpres = Number(P) * 1000000;
+                break;
+            case 'gpa':
+                convpres = Number(P) * 1000000000;
+                break;
+            case 'tpa':
+                convpres = Number(P) * 1000000000000;
+                break;
+        }
         
         if (R == null || R == ""){
             typeset(() => {
