@@ -44,47 +44,48 @@ function calc() {
         
         switch (tempunit) {
             case 'kelvin':
-                convtemp = Number(T); 
+                convtemp = Math.round(Number(T)*1000)/1000; 
                 break;
             case 'celsius':
-                convtemp = Number(T) + 273.15;
+                convtemp = Math.round((Number(T) + 273.15)*1000)/1000;
                 break;
             case 'farenheit':
-                convtemp = (Number(T) - 32) * 5/9 + 273.15;
+                convtemp = Math.round(((Number(T) - 32) * 5/9 + 273.15)*1000)/1000;
                 break;
         }
     
         switch (voluunit) {
             case 'mm':
-                convvol = Number(V) / 1000000000;
+                convvol = Math.round(Number(V) / 1000000000*1000)/1000;
                 break;
             case 'cm':
-                convvol = Number(V) / 1000000;
+                convvol = Math.round(Number(V) / 1000000*1000)/1000;
                 break;
             case 'dm':
             case 'l':
-                convvol = Number(V) / 1000;
+                // igen tudom
+                convvol = Math.round(Number(V) / 1000 * 1000)/1000;
                 break;
             case 'm':
-                convvol = Number(V);
+                convvol = Math.round(Number(V)*1000)/1000;
                 break;
         }
     
         switch (presunit) {
             case 'pa':
-                convpres = Number(P);
+                convpres = Math.round(Number(P)*1000)/1000;
                 break;
             case 'kpa':
-                convpres = Number(P) * 1000;
+                convpres = Math.round(Number(P) * 1000 * 1000) / 1000;
                 break;
             case 'mpa':
-                convpres = Number(P) * 1000000;
+                convpres = Math.round(Number(P) * 1000000 * 1000) / 1000;
                 break;
             case 'gpa':
-                convpres = Number(P) * 1000000000;
+                convpres = Math.round(Number(P) * 1000000000 * 1000) / 1000;
                 break;
             case 'tpa':
-                convpres = Number(P) * 1000000000000;
+                convpres = Math.round(Number(P) * 1000000000000 * 1000) / 1000;
                 break;
         }
         
