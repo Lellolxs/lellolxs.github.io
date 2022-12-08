@@ -6,6 +6,10 @@ function typeset(code) {
   return promise;
 }
 
+function mround(n) {
+    return Math.round(n*1000)/1000;
+}
+
 function calc() {
     var tempunit = document.getElementById("unitofT").value;
     var voluunit = document.getElementById("unitofV").value;
@@ -44,48 +48,47 @@ function calc() {
         
         switch (tempunit) {
             case 'kelvin':
-                convtemp = Math.round(Number(T)*1000)/1000; 
+                convtemp = Number(T); 
                 break;
             case 'celsius':
-                convtemp = Math.round((Number(T) + 273.15)*1000)/1000;
+                convtemp = Number(T) + 273.15;
                 break;
             case 'farenheit':
-                convtemp = Math.round(((Number(T) - 32) * 5/9 + 273.15)*1000)/1000;
+                convtemp = (Number(T) - 32) * 5/9 + 273.15;
                 break;
         }
     
         switch (voluunit) {
             case 'mm':
-                convvol = Math.round(Number(V) / 1000000000*1000)/1000;
+                convvol = Number(V) / 1000000000;
                 break;
             case 'cm':
-                convvol = Math.round(Number(V) / 1000000*1000)/1000;
+                convvol = Number(V) / 1000000;
                 break;
             case 'dm':
             case 'l':
-                // igen tudom
-                convvol = Math.round(Number(V) / 1000 * 1000)/1000;
+                convvol = Number(V) / 1000;
                 break;
             case 'm':
-                convvol = Math.round(Number(V)*1000)/1000;
+                convvol = Number(V);
                 break;
         }
     
         switch (presunit) {
             case 'pa':
-                convpres = Math.round(Number(P)*1000)/1000;
+                convpres = Number(P);
                 break;
             case 'kpa':
-                convpres = Math.round(Number(P) * 1000 * 1000) / 1000;
+                convpres = Number(P) * 1000;
                 break;
             case 'mpa':
-                convpres = Math.round(Number(P) * 1000000 * 1000) / 1000;
+                convpres = Number(P) * 1000000;
                 break;
             case 'gpa':
-                convpres = Math.round(Number(P) * 1000000000 * 1000) / 1000;
+                convpres = Number(P) * 1000000000;
                 break;
             case 'tpa':
-                convpres = Math.round(Number(P) * 1000000000000 * 1000) / 1000;
+                convpres = Number(P) * 1000000000000;
                 break;
         }
         
@@ -107,7 +110,7 @@ function calc() {
 
             typeset(() => {
                 const math = document.getElementById("completeequation");
-                math.innerHTML = `$$R = {${convpres}\\cdot ${convvol} \\over ${N} \\cdot ${convtemp}} = ${Math.round((convpres*convvol)/(N*convtemp)*1000)/1000}$$`;
+                math.innerHTML = `$$R = {${convpres}\\cdot ${convvol} \\over ${N} \\cdot ${mround(convtemp)}} = ${Math.round((convpres*convvol)/(N*convtemp)*1000)/1000}$$`;
 
                 math.style = "display: inline-block; font-size: 120%;";
                 return [math];
@@ -139,7 +142,7 @@ function calc() {
 
             typeset(() => {
                 const math = document.getElementById("completeequation");
-                math.innerHTML = `$$p = {{${N} \\cdot ${R} \\cdot ${convtemp}}\\over ${convvol}} = ${Math.round((N*R*convtemp)/convvol*1000)/1000}$$`;
+                math.innerHTML = `$$p = {{${N} \\cdot ${R} \\cdot ${mround(convtemp)}}\\over ${convvol}} = ${Math.round((N*R*convtemp)/convvol*1000)/1000}$$`;
                 math.style = "display: inline-block; font-size: 120%;";
                 return [math];
             });
@@ -199,7 +202,7 @@ function calc() {
 
             typeset(() => {
                 const math = document.getElementById("completeequation");
-                math.innerHTML = `$$V = {{${N} \\cdot ${R} \\cdot ${convtemp}}\\over ${convpres}} = ${Math.round((N*R*convtemp)/convpres*1000)/1000}$$`;
+                math.innerHTML = `$$V = {{${N} \\cdot ${R} \\cdot ${mround(convtemp)}}\\over ${convpres}} = ${Math.round((N*R*convtemp)/convpres*1000)/1000}$$`;
                 math.style = "display: inline-block; font-size: 120%;";
                 return [math];
             });
@@ -229,7 +232,7 @@ function calc() {
 
             typeset(() => {
                 const math = document.getElementById("completeequation");
-                math.innerHTML = `$$n = {{${convpres} \\cdot ${convvol}} \\over {${R} \\cdot ${convtemp}}} = ${Math.round((convpres*convvol)/(R*convtemp)*1000)/1000}$$`;
+                math.innerHTML = `$$n = {{${convpres} \\cdot ${convvol}} \\over {${R} \\cdot ${mround(convtemp)}}} = ${Math.round((convpres*convvol)/(R*convtemp)*1000)/1000}$$`;
                 math.style = "display: inline-block; font-size: 120%;";
                 return [math];
             });
