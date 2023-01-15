@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <title>Nyersanyag számoló</title>
+    <style>
+        label {
+            display: block;
+            font-size: 110%;
+            width: fit-content;
+        }
+        input:focus {
+            border: 1px solid black;
+            outline: none;
+        }
+        .inputfields {
+            flex: 25%;
+        }
+
+        .wrap {
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        @media (max-width: 800px) {
+            .inputfields {
+                flex: 50%;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .inputfields {
+                flex: 100%;
+            }
+        }
+
+        .closebutton {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            right: -10px;
+            top: -10px;
+            border-radius: 17px !important;
+        }
+
+        .calcbutton {
+            width: 180px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container w-50 mt-5">
+        <div id="fieldContainer">
+            <div class="wrap border border-secondary rounded-4 p-4 mb-3 justify-content-between">
+                <!-- <button class="btn btn-danger closebutton">X</button> -->
+                <div class="inputfields">
+                    <div style="width: fit-content;" class="mx-auto">
+                        <label for="width">Szélesség</label>
+                        <input type="number" id="width">
+                    </div>
+                </div>
+                <div class="inputfields">
+                    <div style="width: fit-content;" class="mx-auto">
+                        <label for="height">Magasság</label>
+                        <input type="number" id="height">
+                    </div>
+                </div>
+                <div class="inputfields">
+                    <div style="width: fit-content;" class="mx-auto">
+                        <label for="depth">Vastagság</label>
+                        <input type="number" id="depth">
+                    </div>
+                </div>
+                <div class="inputfields">
+                    <div style="width: fit-content;" class="mx-auto">
+                        <label for="count">Darabszám</label>
+                        <input type="number" id="count">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-info mx-auto calcbutton" onclick="calculate()">Számol</button>
+        <button class="btn btn-info mx-auto calcbutton mt-3" onclick="addField()">Mező hozzáadása</button>
+    </div>
+    <script src="./js/jquery-3.6.3.min.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
