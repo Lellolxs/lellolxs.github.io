@@ -26,15 +26,38 @@
             position: relative;
         }
 
-        @media (max-width: 800px) {
+        @media (max-width: 1600px) {
             .inputfields {
                 flex: 50%;
             }
+            div.maincontainer{
+                width: 50% !important;
+            }
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 1300px) {
+            .inputfields {
+                flex: 50%;
+            }
+            div.maincontainer{
+                width: 65% !important;
+            }
+        }
+        @media (max-width: 997px) {
+            .inputfields {
+                flex: 50%;
+            }
+            div.maincontainer{
+                width: 85% !important;
+            }
+        }
+
+        @media (max-width: 767px) {
             .inputfields {
                 flex: 100%;
+            }
+            div.maincontainer{
+                width: 65% !important;
             }
         }
 
@@ -51,35 +74,64 @@
             width: 180px;
             display: block;
         }
+
+        .input-group-text {
+            border-top-left-radius: 0 !important;
+            border-bottom-left-radius: 0 !important;
+        }
+
+        input.form-control:focus {
+            box-shadow: none !important;
+        }
     </style>
 </head>
 <body>
-    <div class="container w-50 mt-5">
+    <div class="maincontainer container w-75 mt-5">
         <div id="fieldContainer">
             <div class="wrap border border-secondary rounded-4 p-4 mb-3 justify-content-between">
                 <!-- <button class="btn btn-danger closebutton">X</button> -->
                 <div class="inputfields">
                     <div style="width: fit-content;" class="mx-auto">
-                        <label for="width">Szélesség</label>
-                        <input type="number" id="width">
+                        <label for="width" class="form-label">Szélesség</label>
+                        <div class="input-group">
+                            <input type="number" id="width" class="form-control">
+                            <div class="input-group-append">
+                                <span class="input-group-text"> mm </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="inputfields">
                     <div style="width: fit-content;" class="mx-auto">
-                        <label for="height">Magasság</label>
-                        <input type="number" id="height">
+                        <label for="height" class="form-label">Magasság</label>
+                        <div class="input-group">
+                            <input type="number" id="height" class="form-control">
+                            <div class="input-group-append">
+                                <span class="input-group-text"> mm </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="inputfields">
                     <div style="width: fit-content;" class="mx-auto">
-                        <label for="depth">Vastagság</label>
-                        <input type="number" id="depth">
+                        <label for="depth" class="form-label">Vastagság</label>
+                        <div class="input-group">
+                            <input type="number" id="depth" class="form-control">
+                            <div class="input-group-append">
+                                <span class="input-group-text"> mm </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="inputfields">
                     <div style="width: fit-content;" class="mx-auto">
-                        <label for="count">Darabszám</label>
-                        <input type="number" id="count">
+                        <label for="count" class="form-label">Darabszám</label>
+                        <div class="input-group">
+                            <input type="number" id="count" class="form-control">
+                            <div class="input-group-append">
+                                <span class="input-group-text"> db </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -87,6 +139,7 @@
 
         <button class="btn btn-info mx-auto calcbutton" onclick="calculate()">Számol</button>
         <button class="btn btn-info mx-auto calcbutton mt-3" onclick="addField()">Mező hozzáadása</button>
+        <h5 id="eredmeny" class="text-center mt-4"></h5>
     </div>
     <script src="./js/jquery-3.6.3.min.js"></script>
     <script src="./main.js"></script>
