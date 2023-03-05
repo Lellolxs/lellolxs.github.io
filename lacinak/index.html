@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="./media/ico/favico-web.png">
     <title>Nyersanyag számoló</title>
     <style>
+        body {
+            background-image: url("./background.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* background-position: 50% 50%; */
+        }
         label {
             display: block;
             font-size: 110%;
@@ -26,7 +33,17 @@
             position: relative;
         }
 
+        @media (min-width: 1920px) {
+            body {
+                background-size: cover;
+                /* background-position: 50% 50%; */
+            }
+        }
+
         @media (max-width: 1600px) {
+            body {
+                background-position: 50% 50%;
+            }
             .inputfields {
                 flex: 50%;
             }
@@ -65,8 +82,8 @@
             position: absolute;
             width: 40px;
             height: 40px;
-            right: -10px;
-            top: -10px;
+            right: -12px;
+            top: -12px;
             border-radius: 17px !important;
         }
 
@@ -83,63 +100,103 @@
         input.form-control:focus {
             box-shadow: none !important;
         }
+        .input-bg {
+            background: rgba(50, 50, 50, 0.6);
+            /* background: rgba(19, 19, 19, 0.61); */
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8.6px);
+            -webkit-backdrop-filter: blur(8.6px);
+            /* border: 1px solid rgba(19, 19, 19, 1); */
+        }
+
+        .result-bg {
+            background: rgba(50, 50, 50, 0.6);
+            /* background: rgba(19, 19, 19, 0.61); */
+            width: 50%;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8.6px);
+            -webkit-backdrop-filter: blur(8.6px);
+            /* border: 1px solid rgba(19, 19, 19, 1); */
+        }
     </style>
 </head>
 <body>
     <div class="maincontainer container w-75 mt-5">
         <div id="fieldContainer">
-            <div class="wrap border border-secondary rounded-4 p-4 mb-3 justify-content-between">
+            <div class="border border-secondary rounded-4 p-3 pb-2 mb-3 text-light input-bg currentField">
                 <!-- <button class="btn btn-danger closebutton">X</button> -->
-                <div class="inputfields">
-                    <div style="width: fit-content;" class="mx-auto">
-                        <label for="width" class="form-label">Szélesség</label>
-                        <div class="input-group">
-                            <input type="number" id="width" class="form-control">
-                            <div class="input-group-append">
-                                <span class="input-group-text"> mm </span>
+                <div class="wrap justify-content-between">
+                    <div class="inputfields">
+                        <div style="width: fit-content;" class="mx-auto">
+                            <label for="width" class="form-label">Hosszúság</label>
+                            <div class="input-group">
+                                <input type="number" id="width" oninput="calcIndividual(this)" class="form-control calc-input">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"> mm </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inputfields">
+                        <div style="width: fit-content;" class="mx-auto">
+                            <label for="height" class="form-label">Szélesség</label>
+                            <div class="input-group">
+                                <input type="number" id="height" oninput="calcIndividual(this)" class="form-control calc-input">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"> mm </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inputfields">
+                        <div style="width: fit-content;" class="mx-auto">
+                            <label for="depth" class="form-label">Vastagság</label>
+                            <div class="input-group">
+                                <input type="number" id="depth" oninput="calcIndividual(this)" class="form-control calc-input">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"> mm </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inputfields">
+                        <div style="width: fit-content;" class="mx-auto">
+                            <label for="count" class="form-label">Darabszám</label>
+                            <div class="input-group">
+                                <input type="number" id="count" oninput="calcIndividual(this)" value="1" class="form-control calc-input">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"> db </span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="inputfields">
-                    <div style="width: fit-content;" class="mx-auto">
-                        <label for="height" class="form-label">Magasság</label>
-                        <div class="input-group">
-                            <input type="number" id="height" class="form-control">
-                            <div class="input-group-append">
-                                <span class="input-group-text"> mm </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="inputfields">
-                    <div style="width: fit-content;" class="mx-auto">
-                        <label for="depth" class="form-label">Vastagság</label>
-                        <div class="input-group">
-                            <input type="number" id="depth" class="form-control">
-                            <div class="input-group-append">
-                                <span class="input-group-text"> mm </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="inputfields">
-                    <div style="width: fit-content;" class="mx-auto">
-                        <label for="count" class="form-label">Darabszám</label>
-                        <div class="input-group">
-                            <input type="number" id="count" class="form-control">
-                            <div class="input-group-append">
-                                <span class="input-group-text"> db </span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="text-light text-center mt-2 individual">
+                    <span class="">1 db: 0 m<sup>3</sup> | x db: 0 m<sup>3</sup></span>
                 </div>
             </div>
         </div>
 
+        <!-- ez egy kupac kula, onclicket soha nem kellene hasznalni js-be kell eventet figyelni -->
+        <div class="input-bg border border-secondary rounded-4 p-3 pb-2 my-4 text-light w-50 mx-auto">
+            <h5 id="eredmeny" class="text-center"><span>Össz térfogat: 0 m<sup>3</sup></span></h5>
+            <div class="fasz">
+                <div style="width: fit-content;" class="mx-auto">
+                    <!-- <label for="width" class="form-label">Hosszúság</label> -->
+                    <div class="input-group">
+                        <input type="number" id="resource-cost" oninput="recalcPrice()" placeholder="Alapanyag ára" class="form-control">
+                        <div class="input-group-append">
+                            <span class="input-group-text"> HUF/m<sup>3</sup> </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 id="cost" class="text-center text-light mt-5">Összeg: 0 Ft.</h4>
+        </div>
         <button class="btn btn-info mx-auto calcbutton" onclick="calculate()">Számol</button>
-        <button class="btn btn-info mx-auto calcbutton mt-3" onclick="addField()">Mező hozzáadása</button>
-        <h5 id="eredmeny" class="text-center mt-4"></h5>
+        <button class="btn btn-info mx-auto calcbutton my-3" onclick="addField()">Mező hozzáadása</button>
     </div>
     <script src="./js/jquery-3.6.3.min.js"></script>
     <script src="./main.js"></script>
