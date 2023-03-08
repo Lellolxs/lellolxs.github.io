@@ -1,3 +1,8 @@
+<!-- "számol" gomb a alapanyag ára input mező mellé
+    "mező hozzáadása" gomb "desktop" ablakméretnél az ablak jobb alsó sarka fixed pozíció,
+    a végső kiszámolt alapanyag ár és térfogat az oldal aljára, a mezők után
+-->
+
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -125,7 +130,7 @@
 <body>
     <div class="maincontainer container w-75 mt-5">
         <div id="fieldContainer">
-            <div class="border border-secondary rounded-4 p-3 pb-2 mb-3 text-light input-bg currentField">
+            <div class="border border-secondary rounded-4 p-3 pb-2 mb-3 text-light input-bg" id="test-asd">
                 <!-- <button class="btn btn-danger closebutton">X</button> -->
                 <div class="wrap justify-content-between">
                     <div class="inputfields">
@@ -186,14 +191,14 @@
                 <div style="width: fit-content;" class="mx-auto">
                     <!-- <label for="width" class="form-label">Hosszúság</label> -->
                     <div class="input-group">
-                        <input type="number" id="resource-cost" oninput="recalcPrice()" placeholder="Alapanyag ára" class="form-control">
+                        <input type="number" id="resource-cost" placeholder="Alapanyag ára" class="form-control">
                         <div class="input-group-append">
                             <span class="input-group-text"> HUF/m<sup>3</sup> </span>
                         </div>
                     </div>
                 </div>
             </div>
-            <h4 id="cost" class="text-center text-light mt-5">Összeg: 0 Ft.</h4>
+            <h4 id="cost" class="text-center text-light mt-5">Összeg: 0.00 Ft.</h4>
         </div>
         <button class="btn btn-info mx-auto calcbutton" onclick="calculate()">Számol</button>
         <button class="btn btn-info mx-auto calcbutton my-3" onclick="addField()">Mező hozzáadása</button>
