@@ -51,7 +51,7 @@ const newField = `
         </div>
     </div>
     <div class="text-light text-center mt-2 individual">
-        <span class="">1 db: 0 m<sup>3</sup> | x db: 0 m<sup>3</sup></span>
+        <span class="mx-2 individual-output">1 db: 0 m<sup>3</sup></span>
     </div>
 </div>
 `
