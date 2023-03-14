@@ -65,7 +65,7 @@
                 width: 65% !important;
             }
         }
-        @media (max-width: 997px) {
+        @media (max-width: 998px) {
             .inputfields {
                 flex: 50%;
             }
@@ -74,12 +74,20 @@
             }
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             .inputfields {
                 flex: 100%;
             }
             div.maincontainer{
                 width: 65% !important;
+            }
+
+            .valalmmain {
+                width: 100% !important;
+            }
+
+            .individual-output{
+                display:block;
             }
         }
 
@@ -185,7 +193,7 @@
         </div>
 
         <!-- ez egy kupac kula, onclicket soha nem kellene hasznalni js-be kell eventet figyelni -->
-        <div class="input-bg border border-secondary rounded-4 p-3 pb-2 my-4 text-light w-50 mx-auto">
+        <div class="input-bg border border-secondary rounded-4 p-3 pb-2 my-4 text-light w-50 mx-auto valalmmain">
             <h5 id="eredmeny" class="text-center"><span>Össz térfogat: 0 m<sup>3</sup></span></h5>
             <div class="fasz">
                 <div style="width: fit-content;" class="mx-auto">
@@ -198,7 +206,7 @@
                     </div>
                 </div>
             </div>
-            <h4 id="cost" class="text-center text-light mt-5">Összeg: 0.00 Ft.</h4>
+            <h4 id="cost" class="text-center text-light mt-5">Összeg: 0.00 Ft</h4>
         </div>
         <button class="btn btn-info mx-auto calcbutton" onclick="calculate()">Számol</button>
         <button class="btn btn-info mx-auto calcbutton my-3" onclick="addField()">Mező hozzáadása</button>

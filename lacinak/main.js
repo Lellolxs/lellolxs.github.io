@@ -55,6 +55,7 @@ const newField = `
     </div>
 </div>
 `
+
 function delField(a){
     $(a).parent().remove();
     // calculate();
@@ -65,7 +66,7 @@ function formatMoney(number, decPlaces, decSep, thouSep) {
     decSep = typeof decSep === "undefined" ? "." : decSep;
     thouSep = typeof thouSep === "undefined" ? "," : thouSep;
     var sign = number < 0 ? "-" : "";
-    var i = String(parseInt(number = Math.abs(Number(number) || 0).toFixed(decPlaces)));
+    var i = String(parseInt(number = Math.abs(parseFloat(number) || 0).toFixed(decPlaces)));
     var j = (j = i.length) > 3 ? j % 3 : 0;
 
     return sign +
@@ -83,28 +84,29 @@ var sum = 0;
 function calculate() {
     sum = 0;
     for (let i = 0; i < inputs.length; i+=4) {
-        let width = Number(inputs[i].value)/1000;
-        let height = Number(inputs[i+1].value)/1000;
-        let depth = Number(inputs[i+2].value)/1000;
-        let count = Number(inputs[i+3].value);
+        let width = parseFloat(inputs[i].value)/1000;
+        let height = parseFloat(inputs[i+1].value)/1000;
+        let depth = parseFloat(inputs[i+2].value)/1000;
+        let count = parseFloat(inputs[i+3].value);
         sum += width*height*depth*count;
     }
-    resultField.empty();
-    //sum = Math.round(sum*10000)/10000;
-    resultField.append(`<span title="${Math.round(sum*100000)/100000}">Össz térfogat: ${Math.round(sum*100000)/100000} m<sup>3</sup></span>`);
-    if (isNaN(parseFloat(r_cost.value))) {
 
-    } else {
-        cost.innerText = `Összeg: ${formatMoney(sum*parseFloat(r_cost.value))} Ft.`
+    if (isNaN(sum) || isNaN(parseFloat(r_cost.value))){
+        return;
+    }
+
+    resultField.empty();
+    resultField.append(`<span title="${Math.round(sum*1000000)/1000000}">Össz térfogat: ${Math.round(sum*1000000)/1000000} m<sup>3</sup></span>`);
+
+
+    let HUF = new Intl.NumberFormat("hu-HU", {
+        style: 'currency',
+        currency: 'HUF',
+    })
+    if (!isNaN(sum*parseFloat(r_cost.value))){
+        cost.innerText = `Összeg: ${HUF.format(sum*parseFloat(r_cost.value))}`
     }
 }
-
-// function recalcPrice(){
-//     if (isNaN(parseFloat(r_cost.value))) {
-//         return;
-//     }
-//     cost.innerText = `Összeg: ${formatMoney(sum*parseFloat(r_cost.value))} Ft.`
-// }
 
 function addField() {
     fieldContainer.append($.parseHTML(newField));
@@ -119,15 +121,16 @@ function calcIndividual(e){
     let depth = parseFloat(root.querySelector('#depth').value)/1000;
     let count = parseFloat(root.querySelector('#count').value);
 
-    // let count = parseFloat($(e).closest('.currentField').children('input'));
-    //console.log($(e).closest('.currentField').html());
-    //console.log($(e).val());
-    //console.log(dx[0].querySelector("#width").value)
     let volume = width*depth*height;
 
-    //console.log(localroot)
-    // console.log(localroot.children('.individual'));
-    //console.log(localroot.children('#count').html());
 
-    individual.innerHTML = `<h5>1 db: ${Math.round(volume*1000000)/1000000} m<sup>3</sup>\t${count} db: ${Math.round(volume*count*1000000)/1000000} m<sup>3</sup></h5>`
+    if ((isNaN(width) || isNaN(height) || isNaN(depth) || isNaN(count))){
+        return;
+    }
+
+    if (count == 1){
+        individual.innerHTML = `1 db: ${Math.round(volume*1000000)/1000000} m<sup>3</sup>`
+    } else {
+        individual.innerHTML = `<span class="mx-2 individual-output">1 db: ${Math.round(volume*1000000)/1000000} m<sup>3</sup></span><span class="mx-2 individual-output">${count} db: ${Math.round(volume*count*1000000)/1000000} m<sup>3</sup></span>`
+    }
 }
