@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../style/main.css">
+    <title>Blog</title>
+</head>
+
+<body>
+    <main class="container-fluid m-0 p-0 mb-5">
+        <div class="row m-0 p-0 justify-content-center">
+            <div id="content" class="col-12 col-sm-11 col-md-9 col-lg-7 col-xl-6">
+                <h2 class="section-title">Setting up the environment</h2>
+                <hr>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"><a class="navlink-middle" href="../index.html">Home</a></div>
+                    <div class="col"><a class="navlink-right" href="kernel.html">Next</a></div>
+                </div>
+                <p class="section-text">The device which will host the OS has an ARM processor. Using a cross-compiling toolchain, it is possible to generate executables which will run on a different architecture than from which the compiler program was ran.</p>
+                <h4 class="instruction">Terminology</h4>
+                <p class="section-text">The system on which the compiler, linker, assembler and all the other toolchain programs run is called the <i>build</i> system. The system which will run the generated executables is called the <i>host</i> system.</p>
+                <h4 class="instruction">File structure</h4>
+                <p class="section-text">In this section, it will be demonstrated how to set up the build system in an organized way. First, create the directory structure shown below. Here, <i>/home/kvoid</i> is my home directory, so feel free to create the <i>output</i> directory elsewhere. I just placed it there for convenience.</p>
+                <div class="code">home                    
+└──kvoid <span># this is just my home directory</span>
+   └──output
+      ├── nand
+      └── rootfs</div>
+                <h4 class="instruction">Docker</h4>
+                <p class="section-text">I wont go into detail about building images and running containers. If something is not clear or hard to understand, I suggest reading the docker documentation.</p>
+                <div class="code"><span># Dockerfile reference</span>
+<a href="https://docs.docker.com/reference/dockerfile/">https://docs.docker.com/reference/dockerfile/</a>
+
+<span># Docker CLI reference</span>
+<a href="https://docs.docker.com/reference/cli/docker/">https://docs.docker.com/reference/cli/docker/</a></div>
+                <p class="section-text">Through testing I've determined that GCC 13.3 compiles the best performing programs for this specific device. I also found that musl libc performs marginally better than glibc. </p>
+                <p class="section-text">With this in mind, I put together a docker image which contains the bare minimum thats required to run a toolchain. It is based on the testing branch of debian (currently trixie) and by default only contains the toolchain executables, host libraries and the base operating system.</p>
+                <p class="section-text">Using said image as a base, a full toolchain image can be constructed that not only contains the toolchain executables, but other build tools such as GNU make, autoconf, perl and anything that might be needed for cross compilation. An example Dockerfile is attached below.</p>
+                <div class="code"><span># Docker Hub repository: <a target="_blank" href="https://hub.docker.com/r/lellolxs/gcc-musl">https://hub.docker.com/r/lellolxs/gcc-musl</a></span>
+FROM lellolxs/gcc-musl:13.3
+
+USER 0:0
+RUN apt update -y; \
+    apt upgrade -y; \
+    apt install -y curl wget git bzip2 xz-utils patch gawk \
+    libtool make cmake cmake-curses-gui flex bison ninja-build \
+    meson automake autoconf pkgconf vim nano bc libncurses-dev \
+    libssl-dev gperf mercurial patchelf kmod
+
+USER user:user
+WORKDIR /home/user</div>
+                <h4 class="instruction">Usage</h4>
+                <p class="section-text">The examle dockerfile installs every tool that is needed to build the programs that i'll be running. If additional tools are required, append their name to the apt install command in the dockerfile. After the image is buit, run the container with the output folder on the build system attached to <i>/output</i> in the container.</p>
+                <!-- <p class="section-text">Example run command:</p> -->
+                <div class="code">cd /home/kvoid
+docker run --rm -it -v ./output:/output toolchain</div>
+                <p class="section-text">I usually run these containers with the --rm flag so i dont have to worry about disposing them after exiting. Most of the time I use a different container for every single build on the basis that i need a clean environment.</p>
+                <p class="section-text">Obviously if you are willing to remove every residual left by previous builds then you can technically build everything in one container. But i like to keep my peace of mind so i'll just start a new one for every program i build.</p>
+
+                <hr class="mt-5">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"><a class="navlink-middle" href="../index.html">Home</a></div>
+                    <div class="col"><a class="navlink-right" href="kernel.html">Next</a></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

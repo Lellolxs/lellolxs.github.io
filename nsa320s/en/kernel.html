@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../style/main.css">
+    <title>Kernel</title>
+</head>
+
+<body>
+    <main class="container-fluid m-0 p-0">
+        <div class="row m-sm-1 p-0 justify-content-center">
+            <div class="col-11 col-md-9 col-lg-7 col-xl-6">
+                <h2 class="section-title">Linux kernel - 6.6.37</h2>
+                <hr>
+                <p class="section-text">
+                    
+                </p>
+                <h4 class="instruction">Downloads</h4>
+                <div class="code"><span># Latest LTS kernel</span>
+<a target="_blank" href="https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.37.tar.xz">https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.37.tar.xz</a>
+
+<span># Cryptodev module (built in next section)</span>
+<a target="_blank" href="https://github.com/cryptodev-linux/cryptodev-linux.git">https://github.com/cryptodev-linux/cryptodev-linux.git</a>
+
+<span># custom patches and configs</span>
+<a target="_blank" href="">kernel.tar</a>
+
+<span># cross compiling toolchain docker image</span>
+<a target="_blank" href="https://hub.docker.com/r/lellolxs/gcc-musl">https://hub.docker.com/r/lellolxs/gcc-musl</a>
+</div>
+                <h4 class="instruction">Directory structure</h4>
+                <p class="section-text smalltextblock">
+                    Create two additional directories. ~/nand and ~/rootfs. The nand directory will contain everything that will be installed on the nand flash of the device. The rootfs directory will contain libraries and executables used to run the operating system.
+                </p>
+                <div class="code">home                    
+└──user
+    ├── cryptodev-linux
+    ├── kernel.tar
+    ├── linux-6.6.37.tar.xz
+    ├── nand
+    └── rootfs</div>
+
+                <h2 class="subsection-title">Patch, build, install</h2>
+                <p class="section-text smalltextblock">
+                    yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap
+                </p>
+                <div class="code"><span># Extracting archives</span>
+tar -xf linux-6.6.37.tar.xz
+tar -xf kernel.tar
+cd linux-6.6.37
+
+<span># Apply patches</span>
+patch -p1 <../kernel/bodhi.patch
+patch -p1 <../kernel/kvoid.patch
+
+<span># Copy config and build</span>
+cp ../kernel/bodhi.config .config
+make -j7 ARCH=arm CROSS_COMPILE=arm-pc-linux-musleabi-
+
+<span># Install modules and kernel</span>
+make ARCH=arm CROSS_COMPILE=arm-pc-linux-musleabi- \
+    INSTALL_MOD_PATH=/home/user/rootfs modules_install
+
+<span># The kernel and device tree will be stored in flash memory</span>
+cp arch/arm/boot/zImage ~/nand
+cp arch/arm/boot/dts/marvell/kirkwood-nsa320s.dtb ~/nand <span># or whatever, idk this</span>
+</div>
+                <p class="section-text smalltextblock">
+                yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap
+                </p>
+            </div>
+        </div>
+    </main>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
