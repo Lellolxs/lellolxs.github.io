@@ -6,31 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="../style/main.css">
-    <title>Kernel</title>
+    <title>Page title | Zyxel NSA320s</title>
 </head>
 
 <body>
+    <div id="page-container">
+        <header>
+            <h2 class="section-title">Title</h2>
+            <hr>
+            <div class="d-flex justify-content-between">
+                <a href="">Prev</a>
+                <a href="../index.html">Home</a>
+                <a href="">Next</a>
+            </div>
+        </header>
+
+        <main>
+
+        </main>
+
+        <footer>
+            <hr>
+            <div class="d-flex justify-content-between">
+                <a href="">Prev</a>
+                <a href="../index.html">Home</a>
+                <a href="">Next</a>
+            </div>
+        </footer>
+    </div>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+<!-- <body>
     <main class="container-fluid m-0 p-0">
         <div class="row m-sm-1 p-0 justify-content-center">
             <div class="col-11 col-md-9 col-lg-7 col-xl-6">
                 <h2 class="section-title">Linux kernel - 6.6.37</h2>
                 <hr>
-                <p class="section-text">
-                    
-                </p>
-                <h4 class="instruction">Downloads</h4>
-                <div class="code"><span># Latest LTS kernel</span>
-<a target="_blank" href="https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.37.tar.xz">https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.37.tar.xz</a>
 
-<span># Cryptodev module (built in next section)</span>
-<a target="_blank" href="https://github.com/cryptodev-linux/cryptodev-linux.git">https://github.com/cryptodev-linux/cryptodev-linux.git</a>
-
-<span># custom patches and configs</span>
-<a target="_blank" href="">kernel.tar</a>
-
-<span># cross compiling toolchain docker image</span>
-<a target="_blank" href="https://hub.docker.com/r/lellolxs/gcc-musl">https://hub.docker.com/r/lellolxs/gcc-musl</a>
-</div>
                 <h4 class="instruction">Directory structure</h4>
                 <p class="section-text smalltextblock">
                     Create two additional directories. ~/nand and ~/rootfs. The nand directory will contain everything that will be installed on the nand flash of the device. The rootfs directory will contain libraries and executables used to run the operating system.
@@ -75,6 +90,4 @@ cp arch/arm/boot/dts/marvell/kirkwood-nsa320s.dtb ~/nand <span># or whatever, id
         </div>
     </main>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+</body> -->

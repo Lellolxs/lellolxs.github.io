@@ -10,56 +10,59 @@
 </head>
 
 <body>
-    <main class="container-fluid m-0 p-0">
-        <div class="row m-0 p-0 justify-content-center">
-            <div id="content" class="col-12 col-sm-11 col-md-9 col-lg-7 col-xl-6">
-                <h2 class="section-title">Linux on the Zyxel NSA320s NAS</h2>
-                <hr>
-                <p class="section-text">Hi, my name is Peter. I like to tinker, its just the way i do things. I buy something, use it for a while, and take it apart to see how it works. So naturally, when i bought a NAS box already used and in bad condition, my first thought was to modify it somehow.</p>
-                <p class="section-text">First i applied some homebrew patches that didnt really go that deep into the system. But then i fould a blog of someone who managed to get debian running on the damned thing. But debian is bloated, i thought to myself. So i set out on a journey to make a custom linux based firmware / operating system for my NAS.</p>
-                <p class="section-text">Well. Actually this is the second NAS. I managed to brick the first one, possibly by shorting the UART pins somehow. It still boots but i get no output over serial so either the circuit board or the cpu is damaged. So i bought another one with almost the same specs. (Its still an old piece of junk)</p>
-                <h2 class="subsection-title">Table of content</h2>
-                <ol>
-                    <li>
-                        <p class="list-title mb-0 mt-0">Preparations</p>
-                        <ol>
-                            <li><a href="en/buildenv.html">The build environment</a></li>
-                        </ol>
-                    </li>
-                    <li>
-                        <p class="list-title mb-0 mt-4">Low-level</p>
-                        <ol>
-                            <li><a href="en/kernel.html">Kernel</a></li>
-                            <li><a href="en/cryptodev.html">Cryptodev module</a></li>
-                            <li><a href="en/initramfs.html">Initramfs</a></li>
-                        </ol>
-                    </li>
-                    <li>
-                        <p class="list-title mb-0 mt-4">Base components</p>
-                        <ol>
-                            <li><a href="">Busybox</a></li>
-                            <li><a href="">Finit</a></li>
-                            <li><a href="">Kmod</a></li>
-                            <li><a href="">Installation</a></li>
-                        </ol>
-                    </li>
-                    <li>
-                        <p class="list-title mb-0 mt-4">Software/tools that I've installed</p>
-                        <ol>
-                            <li><a href="">Preface</a></li>
-                            <li><a href="">Bash</a></li>
-                            <li><a href="">OpenSSL</a></li>
-                            <li><a href="">OpenSSH</a></li>
-                            <li><a href="">Curl</a></li>
-                            <li><a href="">Nginx</a></li>
-                            <li><a href="">Transmission BitTorrent</a></li>
-                        </ol>
-                    </li>
-                    <li>Final thoughts</li>
-                </ol>
-            </div>
-        </div>
-    </main>
+    <div id="page-container">
+        <header>
+            <h2 class="section-title">Linux on the Zyxel NSA320s NAS</h2>
+            <hr>
+        </header>
+
+        <main>
+            <p class="section-text">Hi, my name is Peter. I like to tinker, its just the way i do things. I buy something, use it for a while, and take it apart to see how it works. So naturally, when i bought a NAS box already used and in bad condition, my first thought was to modify it somehow.</p>
+            <p class="section-text">First i applied some homebrew patches that didnt really go that deep into the system. But then i fould a blog of someone who managed to get debian running on the damned thing. But debian is bloated, i thought to myself. So i set out on a journey to make a custom linux based firmware / operating system for my NAS.</p>
+            <p class="section-text">Well. Actually this is the second NAS. I managed to brick the first one, possibly by shorting the UART pins somehow. It still boots but i get no output over serial so either the circuit board or the cpu is damaged. So i bought another one with almost the same specs. (Its still an old piece of junk)</p>
+            <h2 class="subsection-title">Table of content</h2>
+            <ol>
+                <li>
+                    <p class="list-title mb-0 mt-0">Preparations</p>
+                    <ol>
+                        <li><a href="en/buildenv.html">The build environment</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <p class="list-title mb-0 mt-4">Low-level</p>
+                    <ol>
+                        <li><a href="en/kernel.html">Kernel</a></li>
+                        <li><a href="en/cryptodev.html">Cryptodev module</a></li>
+                        <li><a href="en/initramfs.html">Initramfs</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <p class="list-title mb-0 mt-4">Base components</p>
+                    <ol>
+                        <li><a href="">Busybox</a></li>
+                        <li><a href="">Finit</a></li>
+                        <li><a href="">Kmod</a></li>
+                        <li><a href="">Installation</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <p class="list-title mb-0 mt-4">Software/tools that I've installed</p>
+                    <ol>
+                        <li><a href="">Preface</a></li>
+                        <li><a href="">Bash</a></li>
+                        <li><a href="">OpenSSL</a></li>
+                        <li><a href="">OpenSSH</a></li>
+                        <li><a href="">Curl</a></li>
+                        <li><a href="">Nginx</a></li>
+                        <li><a href="">Transmission BitTorrent</a></li>
+                    </ol>
+                </li>
+                <li>Final thoughts</li>
+            </ol>
+        </main>
+
+        <footer></footer>
+    </div>
     <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 
