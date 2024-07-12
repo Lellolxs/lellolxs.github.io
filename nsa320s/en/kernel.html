@@ -6,31 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="../style/main.css">
-    <title>Page title | Zyxel NSA320s</title>
+    <title>Building the kernel | Zyxel NSA320s</title>
 </head>
 
 <body>
     <div id="page-container">
         <header>
-            <h2 class="section-title">Title</h2>
+            <h2 class="section-title">Building the kernel</h2>
             <hr>
             <div class="d-flex justify-content-between">
-                <a href="">Prev</a>
+                <a href="buildenv.html">Prev</a>
                 <a href="../index.html">Home</a>
-                <a href="">Next</a>
+                <a href="cryptodev.html">Next</a>
             </div>
         </header>
 
         <main>
+            <p class="section-text">As of writing this article, the Linux kernel does not natively support the Zyxel NSA320s and its various components. Luckily there exists patches made by bodhi, a well known figure in the homebrew nas community. They patch every major kernel series to work with a wide variety of nas boxes, including the NSA320s.</p>
+            <p class="section-text">Unfortunately, the latest stable series is not compatible with busybox with or without bodhis patches. This brings many unwanted complications. The main problem is that bodhi only patches a series once, for the 6.6 series the patch they made applies to the 6.6.3 version only. Although a lot has been changed and the 6.6 series is now at the 39th minor version, the patch they made still works for the most part. Only one hunk fails. </p>
+            <p class="section-text">After carefully examining the patch file, the original and the patched kernel code, I put together a patchfile based on bodhi's patches that has the failing hunk fixed. If you chose to use the older 6.6.3 version of the kernel (which is perfectly resonable), the toolchain should be rebuilt too because it links against the 6.6.31 version of the kernel headers.</p>
 
+            <p class="section-text">[git repo link here which contains dockerfiles, toolchain configurations, patchfiles and helper scripts (and anything more that i forgot to mention)]</p>
+
+            <h2 class="subsection-title">Patch, build, install</h2>
+            <p class="section-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse illo, sit magnam, numquam modi rem blanditiis illum a accusamus mollitia provident dicta dolor nesciunt maiores, ipsum id sunt laboriosam velit.
+            </p>
+            <div class="code"><span># Extracting archives</span>
+tar -xf linux-6.6.37.tar.xz
+tar -xf kernel.tar
+cd linux-6.6.37
+
+<span># Apply patches</span>
+patch -p1 <../kernel/bodhi.patch
+patch -p1 <../kernel/kvoid.patch
+
+<span># Copy config and build</span>
+cp ../kernel/bodhi.config .config
+make -j7 ARCH=arm CROSS_COMPILE=arm-pc-linux-musleabi-
+
+<span># Install modules and kernel</span>
+make ARCH=arm CROSS_COMPILE=arm-pc-linux-musleabi- \
+INSTALL_MOD_PATH=/home/user/rootfs modules_install
+
+<span># The kernel and device tree will be stored in flash memory</span>
+cp arch/arm/boot/zImage ~/nand
+cp arch/arm/boot/dts/marvell/kirkwood-nsa320s.dtb ~/nand <span># or whatever, idk this</span>
+</div>
+            <p class="section-text">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad accusantium, eos eligendi quos laborum necessitatibus sed voluptates, possimus ut saepe eum sequi. Autem impedit tenetur vel quas illum dignissimos optio!
+            </p>
         </main>
 
         <footer>
             <hr>
-            <div class="d-flex justify-content-between">
-                <a href="">Prev</a>
+            <div class="d-flex justify-content-between mb-4">
+                <a href="buildenv.html">Prev</a>
                 <a href="../index.html">Home</a>
-                <a href="">Next</a>
+                <a href="cryptodev.html">Next</a>
             </div>
         </footer>
     </div>
@@ -46,46 +79,7 @@
                 <h2 class="section-title">Linux kernel - 6.6.37</h2>
                 <hr>
 
-                <h4 class="instruction">Directory structure</h4>
-                <p class="section-text smalltextblock">
-                    Create two additional directories. ~/nand and ~/rootfs. The nand directory will contain everything that will be installed on the nand flash of the device. The rootfs directory will contain libraries and executables used to run the operating system.
-                </p>
-                <div class="code">home                    
-└──user
-    ├── cryptodev-linux
-    ├── kernel.tar
-    ├── linux-6.6.37.tar.xz
-    ├── nand
-    └── rootfs</div>
 
-                <h2 class="subsection-title">Patch, build, install</h2>
-                <p class="section-text smalltextblock">
-                    yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap
-                </p>
-                <div class="code"><span># Extracting archives</span>
-tar -xf linux-6.6.37.tar.xz
-tar -xf kernel.tar
-cd linux-6.6.37
-
-<span># Apply patches</span>
-patch -p1 <../kernel/bodhi.patch
-patch -p1 <../kernel/kvoid.patch
-
-<span># Copy config and build</span>
-cp ../kernel/bodhi.config .config
-make -j7 ARCH=arm CROSS_COMPILE=arm-pc-linux-musleabi-
-
-<span># Install modules and kernel</span>
-make ARCH=arm CROSS_COMPILE=arm-pc-linux-musleabi- \
-    INSTALL_MOD_PATH=/home/user/rootfs modules_install
-
-<span># The kernel and device tree will be stored in flash memory</span>
-cp arch/arm/boot/zImage ~/nand
-cp arch/arm/boot/dts/marvell/kirkwood-nsa320s.dtb ~/nand <span># or whatever, idk this</span>
-</div>
-                <p class="section-text smalltextblock">
-                yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap yip yap
-                </p>
             </div>
         </div>
     </main>

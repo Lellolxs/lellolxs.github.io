@@ -19,7 +19,7 @@ span {
 }
 
 a {
-    color: #3f99f3;
+    color: hsl(210, 88%, 60%);
     white-space: pre-wrap;
     word-wrap: break-word;
 }
@@ -121,6 +121,6 @@ a {
         margin: 0 auto 0 auto;
     }
     .smalltextblock {
-        width: 70%;
+        width: 80%;
     }
 }
