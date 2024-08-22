@@ -27,7 +27,7 @@
 
         <footer>
             <hr>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mb-4">
                 <a href="">Prev</a>
                 <a href="../index.html">Home</a>
                 <a href="">Next</a>
